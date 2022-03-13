@@ -10,12 +10,12 @@
      		   "dhrystone-full.vcd"
 		   "dhrystone-fullNoMmuMaxPerf.vcd")])
 
-; --------------------      IpC     --------------------
+;; --------------------      IpC     --------------------
 (defun is-valid [] (&& TOP.clk (! TOP.reset)))
 (defun instr-done [] TOP.VexRiscv.lastStageIsFiring)
 (calc-ipc vex-traces)
 
-; --------------------   Pipeline   --------------------
+;; --------------------   Pipeline   --------------------
 (defun setup [(g g)] (set [g (groups "isMoving")]))
 (defun is-stalled [(g g)] (in 0 (map (lambda [x] (in-group x #isMoving)) g)))
 (calc-pipeline-stall vex-traces)

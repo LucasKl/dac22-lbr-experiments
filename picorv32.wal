@@ -1,6 +1,6 @@
 (require riscv-lib)
 
-; -------------------- PicoRv32 --------------------
+;; -------------------- PicoRv32 --------------------
 (defun is-valid [] (&& testbench.clk testbench.resetn))
 (defun instr-done [] testbench.uut.launch_next_insn)
 (calc-ipc '("dhrystone-picorv.vcd"))
