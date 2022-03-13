@@ -3,7 +3,7 @@
 ; --------------------      IpC     --------------------
 (defun is-valid [] (&& TOP.IO_CLK TOP.IO_RST_N))
 (defun instr-done [] TOP.ibex_simple_system.u_top.u_ibex_top.u_ibex_core.id_stage_i.instr_done)
-(calc-ipc '("ibex-base.vcd" "ibex-max.vcd" "ibex-icache.vcd"))
+(calc-ipc '("ibex-base.vcd" "ibex-icache.vcd"))
 
 ; --------------------   Pipeline   --------------------
 (defun is-stalled [] (!= 0 (sum (in-scope 'TOP.ibex_simple_system.u_top.u_ibex_top.u_ibex_core.id_stage_i.stall_ (list ~alu ~branch ~id ~jump ~ld_hz ~mem ~multdiv ~wb)))))

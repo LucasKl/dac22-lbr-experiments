@@ -1,5 +1,5 @@
-(defun setup [] #t)
-(defun clean-up [] #t)
+(defun setup [] #t)                                                     ;; Placeholder definition
+(defun clean-up [] #t)                                                  ;; Placeholder definition
 
 (defun calc-ipc [traces]
   "Calculate the Instructions per Cycle for each trace in traces"
