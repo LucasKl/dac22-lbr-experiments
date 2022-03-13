@@ -1,0 +1,33 @@
+(defun setup [] #t)
+(defun clean-up [] #t)
+
+(defun calc-ipc [traces]
+  "Calculate the Instructions per Cycle for each trace in traces"
+  "Requires: "
+  "  (is-valid)   = should return true at indices that are taken into account"
+  "  (instr-done) = Should return true at indices at which an instruction is commited"
+  (for [trace traces]                                                   ;; Iterate over the list of traces
+       (load trace t)                                                   ;; Load the vcd trace
+       (setup)                                                          ;; Call optional pre-execution code
+       (set [instructions (count (&& (is-valid) (instr-done)))]         ;; Get the number of executed instructions
+       	    [ipc (fdiv 1 (fdiv (count (is-valid)) instructions))])      ;; Calculate the IpC: # valid cycles / # instructions
+       (printf "%40s: %15.2f\n" trace ipc)                              ;; Print the name of the trace and the analysis result
+       (unload t)                                                       ;; Unload the trace to make space for the next trace
+       (clean-up)))                                                     ;; Call optional post-execution code
+
+
+(defun calc-pipeline-stall [traces]
+  "Calculate, how often the pipeline is stalled for each trace in traces"
+  "Requires: "
+  "  (is-valid)   = should return true at indices that are taken into account"
+  "  (is-stalled) = should return true at indices at which the pipeline is stalled"
+  (for [trace traces]                                                   ;; Iterate over the list of traces
+       (load trace t)                                                   ;; Load the vcd trace
+       (setup)                                                          ;; Call optional pre-execution code
+       (whenever (is-valid)                                             ;; Go through trace and call body at each valid index
+		 (if (is-stalled)                                       ;; Check if the pipeline is currently stalled
+		     (set [stalled (+ stalled 1)])                      ;; If the pipeline is stalled increment stalled variable
+    		     (set [moving (+ moving 1)])))                      ;; If the pipeline is not stalled increment moving variable
+       (printf "%40s & %15.2f \\\\\n" trace (fdiv stalled moving))      ;; Print the name of the trace and the analysis result
+       (unload t)                                                       ;; Unload the trace to make space for the next trace 
+       (clean-up)))                                                     ;; Call optional post-execution code

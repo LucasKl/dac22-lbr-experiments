@@ -1,0 +1,33 @@
+(require riscv-lib)
+
+; -------------------- VexRiscv --------------------
+
+(set [vex-traces '(;;"dhrystone-microNoCsr.vcd"
+		   ;; "dhrystone-smallest.vcd"
+		   ;; "dhrystone-smallAndProductive.vcd"
+		   ;; "dhrystone-smallAndProductiveICache.vcd"
+		   ;; "dhrystone-twoThreeStage.vcd"
+		   ;; "dhrystone-secure.vcd"
+		   ;; "dhrystone-linux.vcd"
+     		   ;; "dhrystone-full.vcd"
+		   "dhrystone-fullNoMmuMaxPerf.vcd")])
+
+(alias clk TOP.VexRiscv.clk)
+(defun is-valid [] (&& TOP.clk (! TOP.reset)))
+(defun instr-done [] TOP.VexRiscv.lastStageIsFiring)
+(calc-ipc vex-traces)
+
+; --------------------   Ibex   --------------------
+(defun is-valid [] (&& TOP.IO_CLK TOP.IO_RST_N))
+(defun instr-done [] TOP.ibex_simple_system.u_top.u_ibex_top.u_ibex_core.id_stage_i.instr_done)
+(calc-ipc '("ibex-base.vcd" "ibex-max.vcd" "ibex-icache.vcd"))
+
+; -------------------- PicoRv32 --------------------
+(defun is-valid [] (&& testbench.clk testbench.resetn))
+(defun instr-done [] testbench.uut.launch_next_insn)
+(calc-ipc '("dhrystone-picorv.vcd"))
+
+; --------------------   SERV   --------------------
+(defun is-valid [] (&& TOP.wb_clk (! TOP.wb_rst)))
+(defun instr-done [] TOP.servant_sim.dut.wb_ibus_ack)
+(calc-ipc '("dhrystone-serv.vcd"))

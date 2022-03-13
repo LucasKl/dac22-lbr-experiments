@@ -1,0 +1,6 @@
+(require riscv-lib)
+
+; --------------------      IpC     --------------------
+(defun is-valid [] (&& TOP.wb_clk (! TOP.wb_rst)))
+(defun instr-done [] TOP.servant_sim.dut.wb_ibus_ack)
+(calc-ipc '("dhrystone-serv.vcd"))

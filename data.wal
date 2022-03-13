@@ -1,0 +1,29 @@
+(set [traces '((alias clk TOP.VexRiscv.clk start TOP.VexRiscv.lastStageIsFiring)
+	       "dhrystone-microNoCsr.vcd"
+	       "dhrystone-smallest.vcd"
+	       "dhrystone-smallAndProductive.vcd"
+	       "dhrystone-smallAndProductiveICache.vcd"
+	       "dhrystone-twoThreeStage.vcd"
+	       "dhrystone-secure.vcd"
+	       "dhrystone-linux.vcd"
+     	       "dhrystone-full.vcd"
+	       "dhrystone-fullNoMmuMaxPerf.vcd"
+	       (alias clk TOP.IO_CLK start TOP.ibex_simple_system.u_top.u_ibex_top.u_ibex_core.id_stage_i.instr_done)
+	       "ibex-base.vcd"
+	       "ibex-max.vcd"
+	       (alias clk testbench.clk start testbench.uut.launch_next_insn)
+	       "dhrystone-picorv.vcd"
+	       (alias clk TOP.servant_sim.dut.cpu.clk start TOP.servant_sim.dut.wb_ibus_ack)
+	       "dhrystone-serv.vcd"
+	       )])
+
+(set [vex '("dhrystone-microNoCsr.vcd"
+	    "dhrystone-smallest.vcd"
+	    "dhrystone-smallAndProductive.vcd"
+	    "dhrystone-smallAndProductiveICache.vcd"
+	    "dhrystone-twoThreeStage.vcd"
+	    "dhrystone-secure.vcd"
+	    "dhrystone-linux.vcd"
+     	    "dhrystone-full.vcd"
+	    "dhrystone-fullNoMmuMaxPerf.vcd"
+	    )])

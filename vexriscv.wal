@@ -1,0 +1,21 @@
+(require riscv-lib)
+
+(set [vex-traces '("dhrystone-microNoCsr.vcd"
+		   "dhrystone-smallest.vcd"
+		   "dhrystone-smallAndProductive.vcd"
+		   "dhrystone-smallAndProductiveICache.vcd"
+		   "dhrystone-twoThreeStage.vcd"
+		   "dhrystone-secure.vcd"
+		   "dhrystone-linux.vcd"
+     		   "dhrystone-full.vcd"
+		   "dhrystone-fullNoMmuMaxPerf.vcd")])
+
+; --------------------      IpC     --------------------
+(defun is-valid [] (&& TOP.clk (! TOP.reset)))
+(defun instr-done [] TOP.VexRiscv.lastStageIsFiring)
+(calc-ipc vex-traces)
+
+; --------------------   Pipeline   --------------------
+(defun setup [(g g)] (set [g (groups "isMoving")]))
+(defun is-stalled [(g g)] (in 0 (map (lambda [x] (in-group x #isMoving)) g)))
+(calc-pipeline-stall vex-traces)
