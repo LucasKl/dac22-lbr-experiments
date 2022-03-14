@@ -7,4 +7,4 @@
 
 ;; --------------------   Pipeline   --------------------
 (defun is-stalled [] (in 1 (in-scope 'TOP.ibex_simple_system.u_top.u_ibex_top.u_ibex_core.id_stage_i.stall_ (list ~alu ~branch ~id ~jump ~ld_hz ~mem ~multdiv ~wb))))
-(calc-pipeline-stall '("ibex-base.vcd" "ibex-icache.vcd"))
+(calc-pipeline-stall '("ibex-default.vcd" "ibex-icache.vcd"))
