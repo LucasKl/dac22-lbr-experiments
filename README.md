@@ -21,3 +21,18 @@ Only implements the *Instruction per Cycle* analysis since PicoRV32 is not pipel
 ### serv.wal
 Processor-specific code for the [SERV](https://github.com/olofk/serv) processor.
 Only implements the *Instruction per Cycle* analysis since SERV is not pipelined.
+
+## Publication
+
+The initial paper on WAL will was presented at ASPDAC'22 and can be downloaded here: https://www.ics.jku.at/files/2022ASPDAC_WAL.pdf. 
+If you like WAL you can cite the initial WAL paper as follows: 
+
+```
+@InProceedings{KG:2022,
+  author        = {Lucas Klemmer and Daniel Gro{\ss}e},
+  title         = {{WAL:} A Novel Waveform Analysis Language for Advanced Design Understanding and Debugging},
+  booktitle     = {ASP Design Automation Conf.},
+  year          = 2022
+}
+
+```
