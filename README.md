@@ -24,7 +24,8 @@ Only implements the *Instruction per Cycle* analysis since SERV is not pipelined
 
 ## Publication
 
-The initial paper on WAL will was presented at ASPDAC'22 and can be downloaded here: https://www.ics.jku.at/files/2022ASPDAC_WAL.pdf. 
+The initial paper on WAL will was presented at ASPDAC'22 and can be downloaded here: https://www.ics.jku.at/files/2022ASPDAC_WAL.pdf.
+
 If you like WAL you can cite the initial WAL paper as follows: 
 
 ```
