@@ -24,6 +24,17 @@ Only implements the *Instruction per Cycle* analysis since SERV is not pipelined
 
 ## Publication
 
+This repository contains the experiments for our DAC'22 paper which you can cite as follows:
+
+```
+@InProceedings{KG:2022c,
+  author        = {Lucas Klemmer and Daniel Gro{\ss}e},
+  title         = {Late Breaking Results: Waveform-based Performance Analysis of {RISC-V} Processors},
+  booktitle     = {Design Automation Conf.},
+  year          = 2022
+}
+```
+
 The initial paper on WAL will was presented at ASPDAC'22 and can be downloaded here: https://www.ics.jku.at/files/2022ASPDAC_WAL.pdf.
 
 If you like WAL you can cite the initial WAL paper as follows: 
