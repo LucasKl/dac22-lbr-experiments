@@ -1,5 +1,5 @@
 # dac22-lbr-experiments
-This repository contains the implementation of the experiments for the DAC 2022 Late Breaking Results paper "A Toolbox for Waveform Based RISC-V Processor Analysis".
+This repository contains the implementation of the experiments for the DAC 2022 [Late Breaking Results paper "A Toolbox for Waveform Based RISC-V Processor Analysis"](https://www.ics.jku.at/files/2022DAC_LBR-Waveform-based-Performance-Analyisis-for-RISC-V.pdf).
 
 ## File Description
 
